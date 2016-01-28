@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1245.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import org.usfirst.frc.team1245.robot.commands.ExampleCommand;
 
@@ -34,5 +35,22 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	public static Joystick driverJoystick;
+	public OI(){
+		driverJoystick = new Joystick(0);
+	}
+	
+	//Deadzone
+	public static double deadZone(double val, double deadZone) {
+		// Return a new percentage based on the living zone
+	    if(Math.abs(val) > deadZone) {
+			if(val > 0) {
+				return (val - deadZone) / (1 - deadZone);
+			} else {
+				return -(-val - deadZone) / (1 - deadZone);
+			}
+		}
+		return 0;
+	}
 }
 
