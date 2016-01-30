@@ -1,13 +1,14 @@
 
 package org.usfirst.frc.team1245.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team1245.robot.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.vision.USBCamera;
+
 import org.usfirst.frc.team1245.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team1245.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team1245.robot.subsystems.LeverArm;
 
 /**
@@ -19,11 +20,11 @@ import org.usfirst.frc.team1245.robot.subsystems.LeverArm;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final LeverArm leverArm = new LeverArm();
-
+	//public static USBCamera usbCamera = new USBCamera("cam0");
+	
     Command autonomousCommand;
 
     /**
@@ -32,8 +33,8 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+		//CameraServer.getInstance().startAutomaticCapture(usbCamera);
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
     }
 	
 	public void disabledPeriodic() {

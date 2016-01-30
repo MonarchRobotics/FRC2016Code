@@ -19,8 +19,7 @@ public class Drivetrain extends Subsystem {
     	rearLeft = new CANTalon(RobotMap.rearLeft);
     	rearRight = new CANTalon(RobotMap.rearRight);
     	robotDrive = new RobotDrive(frontLeft, rearLeft, frontRight, rearRight);
-    	robotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
-    	robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+    	
     }
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

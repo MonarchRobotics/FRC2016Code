@@ -1,9 +1,14 @@
 package org.usfirst.frc.team1245.robot.commands;
 
+import java.awt.ImageCapabilities;
+
 import org.usfirst.frc.team1245.robot.OI;
 import org.usfirst.frc.team1245.robot.Robot;
 import org.usfirst.frc.team1245.robot.RobotMap;
 
+import com.ni.vision.NIVision.Image;
+
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -26,7 +31,7 @@ public class Drive extends Command {
     	double y, twist; // set to y/set to twist on driverJoystick
     	y = OI.deadZone(OI.driverJoystick.getY(), RobotMap.deadZone);
     	twist = OI.deadZone(OI.driverJoystick.getTwist(), RobotMap.deadZone);
-    	Robot.drivetrain.robotDrive.arcadeDrive(y, twist);
+    	Robot.drivetrain.robotDrive.arcadeDrive(-y, -twist);
     }
 
     // Make this return true when this Command no longer needs to run execute()
