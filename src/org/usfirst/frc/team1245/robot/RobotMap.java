@@ -20,4 +20,8 @@ public class RobotMap {
 	public static int rearLeft;
 	public static int rearRight;
 	public static double deadZone = .1;
+	
+	//Lifter channels, may need to change later.
+	public static final int lifterChannel = 0;
+	public static final int grabberChannel = 1;
 }

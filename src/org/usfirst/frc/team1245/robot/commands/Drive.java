@@ -23,7 +23,7 @@ public class Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double y, twist;
+    	double y, twist; // set to y/set to twist on driverJoystick
     	y = OI.deadZone(OI.driverJoystick.getY(), RobotMap.deadZone);
     	twist = OI.deadZone(OI.driverJoystick.getTwist(), RobotMap.deadZone);
     	Robot.drivetrain.robotDrive.arcadeDrive(y, twist);
