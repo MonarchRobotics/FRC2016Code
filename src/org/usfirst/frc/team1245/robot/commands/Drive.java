@@ -25,7 +25,7 @@ public class Drive extends Command {
     protected void execute() {
     	double y, twist;
     	y = OI.deadZone(OI.driverJoystick.getY(), RobotMap.deadZone);
-    	twist = OI.deadZone(OI.driverJoystick.getY(), RobotMap.deadZone);
+    	twist = OI.deadZone(OI.driverJoystick.getTwist(), RobotMap.deadZone);
     	Robot.drivetrain.robotDrive.arcadeDrive(y, twist);
     }
 
