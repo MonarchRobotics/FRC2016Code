@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
-     * Gtfo boskin
+     * Gtfo boskin k?
      */
     public void robotInit() {
 		oi = new OI();
