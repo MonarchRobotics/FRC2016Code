@@ -35,8 +35,10 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	public static Joystick driverJoystick;
+	public static Joystick secondaryJoystick;
 	public OI(){
 		driverJoystick = new Joystick(0);
+		secondaryJoystick = new Joystick(1);
 	}
 	
 	//Deadzone

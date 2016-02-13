@@ -1,50 +1,29 @@
 package org.usfirst.frc.team1245.robot.commands;
 
-import java.awt.ImageCapabilities;
-
 import org.usfirst.frc.team1245.robot.OI;
 import org.usfirst.frc.team1245.robot.Robot;
-import org.usfirst.frc.team1245.robot.RobotMap;
 
-import com.ni.vision.NIVision.Image;
-
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Drive extends Command {
-	
-    public Drive() {
+public class MovePulley extends Command {
+
+    public MovePulley() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drivetrain);
+        requires(Robot.pulleyArm);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     }
 
-    private void drive(double y, double twist) {
-        if(twist != 0) {
-            if (twist > 0) {
-                Robot.drivetrain.frontLeft.set(-twist);
-                Robot.drivetrain.rearLeft.set(-twist);
-            } else {
-                Robot.drivetrain.frontRight.set(twist);
-                Robot.drivetrain.rearRight.set(twist);
-            }
-        }
-    }
-    
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double y, twist; // set to y/set to twist on driverJoystick
-    	y = OI.deadZone(OI.driverJoystick.getY(), RobotMap.deadZone);
-    	twist = OI.deadZone(OI.driverJoystick.getTwist(), RobotMap.deadZone);
-    	Robot.drivetrain.robotDrive.arcadeDrive(-y, -twist);
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()

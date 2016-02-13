@@ -19,6 +19,7 @@ public class RobotMap {
 	public static int frontRight = 4;
 	public static int rearLeft = 1;
 	public static int rearRight = 3;
+	public static int pulleyArmChannel = 1;
 	public static double deadZone = .1;
 	
 	//Lifter channels, may need to change later.

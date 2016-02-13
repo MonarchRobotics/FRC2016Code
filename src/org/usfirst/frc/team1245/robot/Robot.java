@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
 
 import org.usfirst.frc.team1245.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1245.robot.subsystems.LeverArm;
+import org.usfirst.frc.team1245.robot.subsystems.PulleyArm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final LeverArm leverArm = new LeverArm();
+	public static final PulleyArm pulleyArm = new PulleyArm();
 	//public static USBCamera usbCamera = new USBCamera("cam0");
 	
     Command autonomousCommand;
@@ -34,6 +36,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+		CameraServer.getInstance().startAutomaticCapture();
 		//CameraServer.getInstance().startAutomaticCapture(usbCamera);
         // instantiate the command used for the autonomous period
     }
