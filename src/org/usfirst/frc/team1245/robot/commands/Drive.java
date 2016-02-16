@@ -1,15 +1,9 @@
 package org.usfirst.frc.team1245.robot.commands;
 
-import java.awt.ImageCapabilities;
-
 import org.usfirst.frc.team1245.robot.OI;
 import org.usfirst.frc.team1245.robot.Robot;
 import org.usfirst.frc.team1245.robot.RobotMap;
 
-import com.ni.vision.NIVision.Image;
-
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

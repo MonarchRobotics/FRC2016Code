@@ -2,12 +2,14 @@
 package org.usfirst.frc.team1245.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 
+import org.usfirst.frc.team1245.robot.commands.StopLeverArm;
 import org.usfirst.frc.team1245.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1245.robot.subsystems.LeverArm;
 import org.usfirst.frc.team1245.robot.subsystems.PulleyArm;
@@ -24,11 +26,10 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final LeverArm leverArm = new LeverArm();
-	//JUST DO IT!!!!!!!!!
 	public static final PulleyArm pulleyArm = new PulleyArm();
-	//public static USBCamera usbCamera = new USBCamera("cam0");
 	
-    //Command autonomousCommand;
+	public static DigitalInput limitSwitch;
+	
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -37,8 +38,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         oi = new OI();
 		CameraServer.getInstance().startAutomaticCapture();
-		//CameraServer.getInstance().startAutomaticCapture(usbCamera);
-        // instantiate the command used for the autonomous period
+		limitSwitch = new DigitalInput(0);
+		// instantiate the command used for the autonomous period
     }
 	
 	public void disabledPeriodic() {
@@ -78,6 +79,9 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+        if(limitSwitch.get()) {
+            Scheduler.getInstance().add(new StopLeverArm());
+        }
         Scheduler.getInstance().run();
     }
     

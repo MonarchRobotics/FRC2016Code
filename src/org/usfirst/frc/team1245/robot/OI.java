@@ -44,6 +44,7 @@ public class OI {
 	public static Joystick driverJoystick;
 	public static Joystick secondaryJoystick;
 	
+	public DigitalInput limitSwitch = new DigitalInput(1);
 	public Button moveLeverArmUpButton;
 	public Button moveLeverArmDownButton;
 	public Button elevateLeverArmButton;
