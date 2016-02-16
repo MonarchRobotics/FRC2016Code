@@ -1,24 +1,17 @@
 package org.usfirst.frc.team1245.robot.subsystems;
 
-import org.usfirst.frc.team1245.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class LeverArm extends Subsystem {
+public class LeverArm extends RelayArm {
+    
 	public DoubleSolenoid lifterSolenoid;
-	public Relay leverArmRelay;
 	public boolean isElevated;
-	public DigitalInput limitSwitch;
+
 	//add more arguments if needed.
-	public LeverArm(){
-		lifterSolenoid = new DoubleSolenoid(RobotMap.lifterForwardChannel, RobotMap.lifterReverseChannel);
-		leverArmRelay = new Relay(RobotMap.leverArmChannel);
-		limitSwitch = new DigitalInput(0);
-		isElevated = false;
+	public LeverArm(int relayChannel, int forwardChannel, int reverseChannel){
+	    super(relayChannel);
+	    isElevated = false;
+		lifterSolenoid = new DoubleSolenoid(forwardChannel, reverseChannel);
 	}
 	
 	//here are methods to use in Commands

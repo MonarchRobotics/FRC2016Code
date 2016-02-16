@@ -1,23 +1,24 @@
 package org.usfirst.frc.team1245.robot.commands;
 
-import org.usfirst.frc.team1245.robot.OI;
-import org.usfirst.frc.team1245.robot.Robot;
+import org.usfirst.frc.team1245.robot.subsystems.RelayArm;
 
 import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class MoveLeverArm extends Command{
+public class MoveRelayArm extends Command{
 	
     private Value direction;
     private boolean finished;
+    private RelayArm subsytem;
     
-	public MoveLeverArm(Value direction){
+	public MoveRelayArm(Value direction, RelayArm subsystem){
 		// Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	    this.direction = direction;
+	    this.subsytem = subsystem;
 	    finished = false;
-		requires(Robot.leverArm);
+		requires(subsystem);
 	}
 	// Called just before this Command runs the first time
     protected void initialize() {
@@ -26,7 +27,7 @@ public class MoveLeverArm extends Command{
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         SmartDashboard.putString("Direction", direction.toString());
-        Robot.leverArm.leverArmRelay.set(direction);
+        subsytem.armRelay.set(direction);
         finished = true;
     }
 

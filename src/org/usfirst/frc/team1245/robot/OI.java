@@ -1,8 +1,8 @@
 package org.usfirst.frc.team1245.robot;
 
-import org.usfirst.frc.team1245.robot.commands.MoveLeverArm;
-import org.usfirst.frc.team1245.robot.commands.StopLeverArm;
-import org.usfirst.frc.team1245.robot.commands.ToggleHeight;
+import org.usfirst.frc.team1245.robot.commands.MoveRelayArm;
+import org.usfirst.frc.team1245.robot.commands.StopRelayArm;
+import org.usfirst.frc.team1245.robot.commands.ToggleLeverArmHeight;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
@@ -44,27 +44,35 @@ public class OI {
 	public static Joystick driverJoystick;
 	public static Joystick secondaryJoystick;
 	
-	public DigitalInput limitSwitch = new DigitalInput(1);
 	public Button moveLeverArmUpButton;
 	public Button moveLeverArmDownButton;
 	public Button elevateLeverArmButton;
 	
+	public Button movePulleyArmUpButton;
+	public Button movePulleyArmDownButton;
+	
 	public OI(){
 		driverJoystick = new Joystick(0);
 		secondaryJoystick = new Joystick(1);
+
+		moveLeverArmUpButton = new JoystickButton(secondaryJoystick, RobotMap.moveLeverArmUpButton);
+		moveLeverArmUpButton.whenPressed(new MoveRelayArm(Value.kForward, Robot.leverArm));
+		moveLeverArmUpButton.whenReleased(new StopRelayArm(Robot.leverArm));
 		
 		moveLeverArmDownButton = new JoystickButton(secondaryJoystick, RobotMap.moveLeverArmDownButton);
-		moveLeverArmDownButton.whenPressed(new MoveLeverArm(Value.kReverse));
-		moveLeverArmDownButton.whenReleased(new StopLeverArm());
-		
-		moveLeverArmUpButton = new JoystickButton(secondaryJoystick, RobotMap.moveLeverArmUpButton);
-		moveLeverArmUpButton.whenPressed(new MoveLeverArm(Value.kForward));
-		moveLeverArmUpButton.whenReleased(new StopLeverArm());
+		moveLeverArmDownButton.whenPressed(new MoveRelayArm(Value.kReverse, Robot.leverArm));
+		moveLeverArmDownButton.whenReleased(new StopRelayArm(Robot.leverArm));
 		
 		elevateLeverArmButton = new JoystickButton(secondaryJoystick, RobotMap.elevateLeverArmButton);
-		elevateLeverArmButton.whenReleased(new ToggleHeight());
+		elevateLeverArmButton.whenReleased(new ToggleLeverArmHeight());
 		
+		movePulleyArmUpButton = new JoystickButton(secondaryJoystick, RobotMap.movePulleyArmUpButton);
+		movePulleyArmUpButton.whenPressed(new MoveRelayArm(Value.kForward, Robot.pulleyArm));
+		movePulleyArmUpButton.whenReleased(new StopRelayArm(Robot.pulleyArm));
 		
+		movePulleyArmDownButton = new JoystickButton(secondaryJoystick, RobotMap.movePulleyArmDownButton);
+		movePulleyArmDownButton.whenPressed(new MoveRelayArm(Value.kReverse, Robot.pulleyArm));
+		movePulleyArmDownButton.whenReleased(new StopRelayArm(Robot.pulleyArm));
 	}
 	
 	//Deadzone

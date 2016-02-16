@@ -1,21 +1,23 @@
 package org.usfirst.frc.team1245.robot.commands;
 
-import org.usfirst.frc.team1245.robot.Robot;
+import org.usfirst.frc.team1245.robot.subsystems.RelayArm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class StopLeverArm extends Command {
+public class StopRelayArm extends Command {
 
     private boolean finished;
+    private RelayArm subsystem;
     
-    public StopLeverArm() {
+    public StopRelayArm(RelayArm subsystem) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(Robot.leverArm);
         finished = false;
+        this.subsystem = subsystem;
+        requires(subsystem);
     }
 
     // Called just before this Command runs the first time
@@ -24,7 +26,7 @@ public class StopLeverArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.leverArm.leverArmRelay.stopMotor();
+        subsystem.armRelay.stopMotor();
         finished = true;
     }
 

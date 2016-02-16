@@ -4,15 +4,13 @@ package org.usfirst.frc.team1245.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.vision.USBCamera;
 
-import org.usfirst.frc.team1245.robot.commands.StopLeverArm;
+import org.usfirst.frc.team1245.robot.commands.StopRelayArm;
 import org.usfirst.frc.team1245.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1245.robot.subsystems.LeverArm;
-import org.usfirst.frc.team1245.robot.subsystems.PulleyArm;
+import org.usfirst.frc.team1245.robot.subsystems.RelayArm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,11 +22,11 @@ import org.usfirst.frc.team1245.robot.subsystems.PulleyArm;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
-	public static final Drivetrain drivetrain = new Drivetrain();
-	public static final LeverArm leverArm = new LeverArm();
-	public static final PulleyArm pulleyArm = new PulleyArm();
+	public static final Drivetrain drivetrain = new Drivetrain(RobotMap.frontLeft, RobotMap.frontRight, RobotMap.rearLeft, RobotMap.rearRight);
+	public static final LeverArm leverArm = new LeverArm(RobotMap.leverArmChannel, RobotMap.leverForwardChannel, RobotMap.leverReverseChannel);
+	public static final RelayArm pulleyArm = new RelayArm(RobotMap.pulleyArmChannel);
 	
-	public static DigitalInput limitSwitch;
+	public DigitalInput limitSwitch;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -80,7 +78,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         if(limitSwitch.get()) {
-            Scheduler.getInstance().add(new StopLeverArm());
+            Scheduler.getInstance().add(new StopRelayArm(Robot.leverArm));
         }
         Scheduler.getInstance().run();
     }

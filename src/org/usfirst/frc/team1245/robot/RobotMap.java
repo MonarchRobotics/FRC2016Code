@@ -24,11 +24,13 @@ public class RobotMap {
 	public static int pulleyArmChannel = 0;
 	
 	//Lifter channels, may need to change later.
-	public static final int lifterForwardChannel = 0;
-	public static final int lifterReverseChannel = 1;
+	public static final int leverForwardChannel = 0;
+	public static final int leverReverseChannel = 1;
 	public static final int leverArmChannel = 1;
 	
 	public static final int moveLeverArmUpButton = 3;
 	public static final int moveLeverArmDownButton = 2;
 	public static final int elevateLeverArmButton = 1;
+	public static final int movePulleyArmUpButton = 0;
+	public static final int movePulleyArmDownButton = 4;
 }
