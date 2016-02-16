@@ -1,7 +1,14 @@
 package org.usfirst.frc.team1245.robot;
 
+import org.usfirst.frc.team1245.robot.commands.MoveLeverArm;
+import org.usfirst.frc.team1245.robot.commands.StopLeverArm;
+import org.usfirst.frc.team1245.robot.commands.ToggleHeight;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -36,9 +43,27 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	public static Joystick driverJoystick;
 	public static Joystick secondaryJoystick;
+	
+	public Button moveLeverArmUpButton;
+	public Button moveLeverArmDownButton;
+	public Button elevateLeverArmButton;
+	
 	public OI(){
 		driverJoystick = new Joystick(0);
 		secondaryJoystick = new Joystick(1);
+		
+		moveLeverArmDownButton = new JoystickButton(secondaryJoystick, RobotMap.moveLeverArmDownButton);
+		moveLeverArmDownButton.whenPressed(new MoveLeverArm(Value.kReverse));
+		moveLeverArmDownButton.whenReleased(new StopLeverArm());
+		
+		moveLeverArmUpButton = new JoystickButton(secondaryJoystick, RobotMap.moveLeverArmUpButton);
+		moveLeverArmUpButton.whenPressed(new MoveLeverArm(Value.kForward));
+		moveLeverArmUpButton.whenReleased(new StopLeverArm());
+		
+		elevateLeverArmButton = new JoystickButton(secondaryJoystick, RobotMap.elevateLeverArmButton);
+		elevateLeverArmButton.whenReleased(new ToggleHeight());
+		
+		
 	}
 	
 	//Deadzone

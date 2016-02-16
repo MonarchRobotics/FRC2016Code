@@ -1,14 +1,22 @@
 package org.usfirst.frc.team1245.robot.commands;
 
+import org.usfirst.frc.team1245.robot.OI;
 import org.usfirst.frc.team1245.robot.Robot;
 
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Grip extends Command{
+public class MoveLeverArm extends Command{
 	
-	public Grip(){
+    private Value direction;
+    private boolean finished;
+    
+	public MoveLeverArm(Value direction){
 		// Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+	    this.direction = direction;
+	    finished = false;
 		requires(Robot.leverArm);
 	}
 	// Called just before this Command runs the first time
@@ -17,13 +25,14 @@ public class Grip extends Command{
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.leverArm.isGripped = !Robot.leverArm.isGripped;
-    	Robot.leverArm.grabberSolenoid.set(Robot.leverArm.isGripped);
+        SmartDashboard.putString("Direction", direction.toString());
+        Robot.leverArm.leverArmRelay.set(direction);
+        finished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return finished;
     }
 
     // Called once after isFinished returns true

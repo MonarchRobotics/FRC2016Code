@@ -24,18 +24,18 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final LeverArm leverArm = new LeverArm();
+	//JUST DO IT!!!!!!!!!
 	public static final PulleyArm pulleyArm = new PulleyArm();
 	//public static USBCamera usbCamera = new USBCamera("cam0");
 	
-    Command autonomousCommand;
-
+    //Command autonomousCommand;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      * Gtfo boskin k?
      */
     public void robotInit() {
-		oi = new OI();
+        oi = new OI();
 		CameraServer.getInstance().startAutomaticCapture();
 		//CameraServer.getInstance().startAutomaticCapture(usbCamera);
         // instantiate the command used for the autonomous period
@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+  //     if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
@@ -62,7 +62,8 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
+        // or comment everything
+    //    if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
     /**

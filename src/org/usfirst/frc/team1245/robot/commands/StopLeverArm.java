@@ -1,26 +1,21 @@
 package org.usfirst.frc.team1245.robot.commands;
 
-import java.awt.ImageCapabilities;
-
-import org.usfirst.frc.team1245.robot.OI;
 import org.usfirst.frc.team1245.robot.Robot;
-import org.usfirst.frc.team1245.robot.RobotMap;
 
-import com.ni.vision.NIVision.Image;
-
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Drive extends Command {
-	
-    public Drive() {
+public class StopLeverArm extends Command {
+
+    private boolean finished;
+    
+    public StopLeverArm() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drivetrain);
+        requires(Robot.leverArm);
+        finished = false;
     }
 
     // Called just before this Command runs the first time
@@ -29,15 +24,13 @@ public class Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double y, twist; // set to y/set to twist on driverJoystick
-    	y = OI.deadZone(OI.driverJoystick.getY(), RobotMap.deadZone);
-    	twist = OI.deadZone(OI.driverJoystick.getTwist(), RobotMap.deadZone);
-    	Robot.drivetrain.robotDrive.arcadeDrive(-y, -twist);
+        Robot.leverArm.leverArmRelay.stopMotor();
+        finished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return finished;
     }
 
     // Called once after isFinished returns true

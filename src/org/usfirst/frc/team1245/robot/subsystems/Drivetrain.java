@@ -14,12 +14,12 @@ public class Drivetrain extends Subsystem {
     public CANTalon frontLeft, frontRight, rearLeft, rearRight;
     public RobotDrive robotDrive;
     public Drivetrain(){
-    	frontLeft = new CANTalon(RobotMap.frontLeft);
-    	frontRight = new CANTalon(RobotMap.frontRight);
-    	rearLeft = new CANTalon(RobotMap.rearLeft);
-    	rearRight = new CANTalon(RobotMap.rearRight);
-    	robotDrive = new RobotDrive(frontLeft, rearLeft, frontRight, rearRight);
-    	
+        frontLeft = new CANTalon(RobotMap.frontLeft);
+        frontRight = new CANTalon(RobotMap.frontRight);
+        rearLeft = new CANTalon(RobotMap.rearLeft);
+        rearRight = new CANTalon(RobotMap.rearRight);
+        robotDrive = new RobotDrive(frontLeft, rearLeft, frontRight, rearRight);
+        
     }
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -27,7 +27,7 @@ public class Drivetrain extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new Drive());
+        setDefaultCommand(new Drive());
     }
 }
 
