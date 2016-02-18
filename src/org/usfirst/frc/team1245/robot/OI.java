@@ -1,7 +1,10 @@
 package org.usfirst.frc.team1245.robot;
 
+import org.usfirst.frc.team1245.robot.commands.Elevate;
 import org.usfirst.frc.team1245.robot.commands.MoveRelayArm;
+import org.usfirst.frc.team1245.robot.commands.StopElevate;
 import org.usfirst.frc.team1245.robot.commands.StopRelayArm;
+import org.usfirst.frc.team1245.robot.commands.ToggleExtendArm;
 import org.usfirst.frc.team1245.robot.commands.ToggleLeverArmHeight;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -51,6 +54,10 @@ public class OI {
 	public Button movePulleyArmUpButton;
 	public Button movePulleyArmDownButton;
 	
+	public Button elevateButton;
+	public Button descendButton;
+	public Button toggleExtendArmButton;
+	
 	public OI(){
 		driverJoystick = new Joystick(0);
 		secondaryJoystick = new Joystick(1);
@@ -73,6 +80,17 @@ public class OI {
 		movePulleyArmDownButton = new JoystickButton(secondaryJoystick, RobotMap.movePulleyArmDownButton);
 		movePulleyArmDownButton.whenPressed(new MoveRelayArm(Value.kReverse, Robot.pulleyArm));
 		movePulleyArmDownButton.whenReleased(new StopRelayArm(Robot.pulleyArm));
+		
+		toggleExtendArmButton = new JoystickButton(secondaryJoystick, RobotMap.toggleExtendArmButton);
+		toggleExtendArmButton.whenReleased(new ToggleExtendArm());
+		
+		elevateButton = new JoystickButton(secondaryJoystick, RobotMap.toggleExtendArmButton);
+		elevateButton.whenPressed(new Elevate(RobotMap.elevateMagnitude));
+		elevateButton.whenReleased(new StopElevate());
+		
+		descendButton = new JoystickButton(secondaryJoystick, RobotMap.descendButton);
+		descendButton.whenPressed(new Elevate(-RobotMap.elevateMagnitude));
+		descendButton.whenReleased(new StopElevate());
 	}
 	
 	//Deadzone

@@ -33,4 +33,14 @@ public class RobotMap {
 	
 	public static final int movePulleyArmUpButton = 6;
 	public static final int movePulleyArmDownButton = 7;
+	
+	public static final int scalarLeft = 5;
+	public static final int scalarRight = 6;
+	public static final int scalarForwardChannel = 0;
+	public static final int scalarReverseChannel = 0;
+	
+	public static final int toggleExtendArmButton = 8;
+	public static final int elevateButton = 11;
+	public static final int descendButton = 10;
+	public static final double elevateMagnitude = .5;
 }

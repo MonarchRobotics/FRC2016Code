@@ -5,12 +5,14 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team1245.robot.commands.StopRelayArm;
 import org.usfirst.frc.team1245.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1245.robot.subsystems.LeverArm;
 import org.usfirst.frc.team1245.robot.subsystems.RelayArm;
+import org.usfirst.frc.team1245.robot.subsystems.Scalar;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +27,7 @@ public class Robot extends IterativeRobot {
 	public static final Drivetrain drivetrain = new Drivetrain(RobotMap.frontLeft, RobotMap.frontRight, RobotMap.rearLeft, RobotMap.rearRight);
 	public static final LeverArm leverArm = new LeverArm(RobotMap.leverArmChannel, RobotMap.leverForwardChannel, RobotMap.leverReverseChannel);
 	public static final RelayArm pulleyArm = new RelayArm(RobotMap.pulleyArmChannel);
+	public static final Scalar scalar = new Scalar(RobotMap.scalarLeft, RobotMap.scalarRight, RobotMap.scalarForwardChannel, RobotMap.scalarReverseChannel);
 	
 	public DigitalInput limitSwitch;
 	
