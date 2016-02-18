@@ -43,4 +43,6 @@ public class RobotMap {
 	public static final int elevateButton = 11;
 	public static final int descendButton = 10;
 	public static final double elevateMagnitude = .5;
+    public static final double openPortcullisMagnitude = .25;
+    public static final double openPortcullisLength = 10;
 }

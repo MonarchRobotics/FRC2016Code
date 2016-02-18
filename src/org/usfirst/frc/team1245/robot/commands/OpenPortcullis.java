@@ -1,8 +1,9 @@
 package org.usfirst.frc.team1245.robot.commands;
 
 import org.usfirst.frc.team1245.robot.Robot;
+import org.usfirst.frc.team1245.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -27,7 +28,7 @@ public class OpenPortcullis extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-        addParallel(new DriveDuration(magnitude, duration));
+        addParallel(new DriveDuration(RobotMap.openPortcullisMagnitude, RobotMap.openPortcullisLength));
         addParallel(new MoveRelayArm(Value.kForward, Robot.pulleyArm));
     }
 }
