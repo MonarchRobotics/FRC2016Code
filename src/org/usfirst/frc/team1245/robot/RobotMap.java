@@ -15,15 +15,14 @@ public class RobotMap {
     // number and the module. For example you with a rangefinder:
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
-	public static int frontLeft = 2;
-	public static int frontRight = 4;
-	public static int rearLeft = 1;
-	public static int rearRight = 3;
-	public static double deadZone = .1;
+	public static final int frontLeft = 2;
+	public static final int frontRight = 4;
+	public static final int rearLeft = 1;
+	public static final int rearRight = 3;
+	public static final double deadZone = .1;
 	
-	public static int pulleyArmChannel = 0;
+	public static final int pulleyArmChannel = 0;
 	
-	//Lifter channels, may need to change later.
 	public static final int leverForwardChannel = 0;
 	public static final int leverReverseChannel = 1;
 	public static final int leverArmChannel = 1;
@@ -31,6 +30,7 @@ public class RobotMap {
 	public static final int moveLeverArmUpButton = 3;
 	public static final int moveLeverArmDownButton = 2;
 	public static final int elevateLeverArmButton = 1;
-	public static final int movePulleyArmUpButton = 0;
-	public static final int movePulleyArmDownButton = 4;
+	
+	public static final int movePulleyArmUpButton = 6;
+	public static final int movePulleyArmDownButton = 7;
 }

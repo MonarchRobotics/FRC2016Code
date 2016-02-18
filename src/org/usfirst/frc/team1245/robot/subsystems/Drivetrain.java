@@ -17,7 +17,7 @@ public class Drivetrain extends Subsystem {
         this.frontRight = new CANTalon(frontRight);
         this.rearLeft = new CANTalon(rearLeft);
         this.rearRight = new CANTalon(rearRight);
-        robotDrive = new RobotDrive(frontLeft, rearLeft, frontRight, rearRight);
+        robotDrive = new RobotDrive(this.frontLeft, this.rearLeft, this.frontRight, this.rearRight);
         
     }
     // Put methods for controlling this subsystem
